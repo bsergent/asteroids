@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 	public AsteroidSpawner spawner;
 	public GameObject earth;
 	public AudioClip audioDamage;
+	public AudioClip audioLose;
 	public TMPro.TextMeshPro lblHealth;
 	public TMPro.TextMeshProUGUI lblScore;
 	public TMPro.TextMeshProUGUI lblGameOver;
@@ -53,11 +54,12 @@ public class GameManager : MonoBehaviour {
 		// DontDestroyOnLoad(gameObject);
 
 		_highscore = PlayerPrefs.GetInt("highscore", 0);
-		UpdateScore();
 
 		_startTime = Time.time;
 		health = health;
 		spawner.gameObject.SetActive(false);
+
+		UpdateScore();
 	}
 
 	void Update() {
@@ -92,6 +94,7 @@ public class GameManager : MonoBehaviour {
 		earth.GetComponent<SpriteRenderer>().enabled = false;
 		earth.GetComponent<Collider2D>().enabled = false;
 		earth.transform.Find("Smoke Particles").GetComponent<ParticleSystem>().Play();
+		SoundManager.PlayOneShot(audioLose, 0, 1.3f);
 
 		lblGameOver.gameObject.SetActive(true);
 		if (Time.time - _startTime > _highscore)
