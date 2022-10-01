@@ -16,7 +16,7 @@ PlayerSettings:
   productName: Planetary Asteroid Defense System
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.10653259, g: 0.11291831, b: 0.13207549, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.058823533, g: 0.058823533, b: 0.058823533, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1

@@ -63,6 +63,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
+		#if UNITY_EDITOR
+		if (Input.GetKeyDown(KeyCode.P)) {
+			var file = $"Screenshots/{System.DateTime.Now.ToString("yyyyMMdd_HHmmss")}.png";
+			Debug.Log($"Saving screenshot to {file}");
+			ScreenCapture.CaptureScreenshot(file);
+		}
+		#endif
+
 		// Reload scene if game over and press space
 		if (Input.GetKeyDown(KeyCode.Space) && health <= 0)
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
