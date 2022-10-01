@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private CameraController _camControl;
 	public AsteroidSpawner spawner;
 	public GameObject earth;
+	public AudioClip audioDamage;
 	public TMPro.TextMeshPro lblHealth;
 	public TMPro.TextMeshProUGUI lblScore;
 	public TMPro.TextMeshProUGUI lblGameOver;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour {
 				Instance.lblHealth.transform.DOPunchScale(Vector3.one * 0.2f, 0.1f);
 				Instance.earth.transform.DOShakePosition(0.1f, 0.05f);
 				camControl.ChromaticAbborate(0.2f);
+				SoundManager.PlayOneShot(Instance.audioDamage);
 			}
 			Instance._health = value;
 			Instance.lblHealth.text = value.ToString();
@@ -47,7 +49,8 @@ public class GameManager : MonoBehaviour {
 			return;
 		}
 		Instance = this;
-		DontDestroyOnLoad(gameObject);
+		// Actually, we do want it to destroy on load bc I don't want to reset state on restart
+		// DontDestroyOnLoad(gameObject);
 
 		_highscore = PlayerPrefs.GetInt("highscore", 0);
 		UpdateScore();

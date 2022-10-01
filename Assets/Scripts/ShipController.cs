@@ -7,6 +7,7 @@ public class ShipController : MonoBehaviour {
 	public float thrust = 1;
 	private float lastCollisionTime;
 	public float speed;
+	public AudioClip audioImpact;
 
 	private Rigidbody2D _rb;
 	private Vector2 _dest = Vector2.zero;
@@ -34,5 +35,6 @@ public class ShipController : MonoBehaviour {
 		Debug.Log($"Ship collided with {col.gameObject.name} at speed {speed}");
 		GameManager.camControl.Shake(speed / 18, 0.05f);
 		lastCollisionTime = Time.time;
+		SoundManager.PlayOneShot(audioImpact, 0.2f);
 	}
 }

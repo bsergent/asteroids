@@ -52,6 +52,7 @@ MonoBehaviour:
   minDistToAccelerateTowards: 0.5
   thrust: 30
   speed: 0
+  audioImpact: {fileID: 8300000, guid: 4ffbaaf78fdbcb74485f13b2151b5d04, type: 3}
 --- !u!212 &6967138348957871487
 SpriteRenderer:
   m_ObjectHideFlags: 0
